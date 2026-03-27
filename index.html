@@ -1,12 +1,896 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math 3b</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma3b Crashkurs</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>GitHub Pages deploy fungerar!</p>
+
+<header class="site-header">
+  <h1>Ma3b <span>Crashkurs</span></h1>
+  <div class="header-meta">
+    <span>Speedrun-version</span>
+    <a href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">Formelblad</a>
+  </div>
+  <div class="progress-container">
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <div class="progress-text">0/10 klara</div>
+  </div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="del1">Del 1: Derivata</button>
+    <button class="tab-btn" data-tab="del2">Del 2: Integraler</button>
+  </nav>
+</header>
+
+<!-- ============================= -->
+<!-- DEL 1: DERIVATA               -->
+<!-- ============================= -->
+<div id="del1" class="tab-panel active">
+
+  <!-- 2.1 Derivatans definition -->
+  <section class="topic" data-topic-id="deriv-def">
+    <div class="topic-header">
+      <h3>2.1 Derivatans definition</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Derivatan mäter hur snabbt en funktion förändras. Tänk: om f(x) är position, så är f'(x) hastigheten.
+        Grafiskt = lutningen på tangentlinjen i en punkt.
+        Positiv derivata → funktionen ökar. Negativ derivata → den minskar. Noll → vågrät tangent.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Tumregel:</strong> f'(x) berättar om grafen lutar uppåt (+), nedåt (−) eller är platt (0) i varje punkt.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">f'(x) = lim<sub>h→0</sub> [f(x+h) − f(x)] / h</span>
+        <span class="formula">f'(x) &gt; 0 → f växer</span>
+        <span class="formula">f'(x) &lt; 0 → f avtar</span>
+        <span class="formula">f'(x) = 0 → vågrät tangent</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=derivata+definition+matematik+3b" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga:</strong> f(x) = x<sup>2</sup>. Beräkna f'(3) med definitionen.</p>
+          <div class="step">f'(3) = lim<sub>h→0</sub> [(3+h)<sup>2</sup> − 9] / h</div>
+          <div class="step">= lim<sub>h→0</sub> [9 + 6h + h<sup>2</sup> − 9] / h</div>
+          <div class="step">= lim<sub>h→0</sub> [6h + h<sup>2</sup>] / h</div>
+          <div class="step">= lim<sub>h→0</sub> (6 + h)</div>
+          <div class="step step-result">= 6</div>
+          <p>Tangentens lutning i x = 3 är alltså 6.</p>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="deriv-def">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>Vad betyder f'(x) = 0 i en punkt?</p>
+          <button class="quiz-option" data-correct="false">Funktionen korsar x-axeln</button>
+          <button class="quiz-option" data-correct="true">Tangenten är vågrät (platt)</button>
+          <button class="quiz-option" data-correct="false">Funktionen har värdet 0</button>
+          <div class="quiz-feedback hidden">Derivatan = 0 betyder att lutningen på tangenten är 0, dvs tangenten är vågrät. Det säger inget om funktionens värde.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>Om f'(2) = −3, vad gäller om funktionen vid x = 2?</p>
+          <button class="quiz-option" data-correct="false">Funktionen ökar</button>
+          <button class="quiz-option" data-correct="true">Funktionen minskar</button>
+          <button class="quiz-option" data-correct="false">Funktionsvärdet är −3</button>
+          <div class="quiz-feedback hidden">Negativ derivata → funktionen minskar i den punkten. Derivatan berättar om förändringen, inte om funktionsvärdet.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Derivatan av en konstant funktion f(x) = 5 är:</p>
+          <button class="quiz-option" data-correct="false">5</button>
+          <button class="quiz-option" data-correct="true">0</button>
+          <button class="quiz-option" data-correct="false">1</button>
+          <div class="quiz-feedback hidden">En konstant förändras inte alls → derivatan är 0. Platt linje = noll lutning.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="deriv-def">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.2 Potensregeln & tangenter -->
+  <section class="topic" data-topic-id="deriv-power">
+    <div class="topic-header">
+      <h3>2.2 Potensregeln &amp; tangenter</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Det här är motorn i derivering. Potensregeln gör att du kan derivera alla polynom snabbt.
+        Sedan kan du skriva tangentens ekvation i vilken punkt som helst.
+        Allt du behöver kunna: flytta ner exponenten, minska den med 1.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Mönstret:</strong> "Flytta ner exponenten framför, minska exponenten med 1." Konstanter försvinner. Derivera varje term för sig.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">f(x) = x<sup>n</sup> → f'(x) = n · x<sup>n−1</sup></span>
+        <span class="formula">f(x) = k · x<sup>n</sup> → f'(x) = k · n · x<sup>n−1</sup></span>
+        <span class="formula">Konstant → derivata = 0</span>
+        <span class="formula">Tangent i x = a: y = f'(a)(x − a) + f(a)</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=potensregeln+derivata+matematik" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga:</strong> f(x) = 3x<sup>4</sup> − 2x<sup>2</sup> + 7x − 5. Bestäm f'(x) och skriv tangentens ekvation i x = 1.</p>
+          <div class="step"><strong>Derivera:</strong></div>
+          <div class="step">3x<sup>4</sup> → 3·4·x<sup>3</sup> = 12x<sup>3</sup></div>
+          <div class="step">−2x<sup>2</sup> → −2·2·x<sup>1</sup> = −4x</div>
+          <div class="step">7x → 7</div>
+          <div class="step">−5 → 0</div>
+          <div class="step step-result">f'(x) = 12x<sup>3</sup> − 4x + 7</div>
+          <div class="step"><strong>Tangent i x = 1:</strong></div>
+          <div class="step">f(1) = 3 − 2 + 7 − 5 = 3</div>
+          <div class="step">f'(1) = 12 − 4 + 7 = 15</div>
+          <div class="step step-result">y = 15(x − 1) + 3 = 15x − 12</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="deriv-power">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>Derivatan av f(x) = 5x<sup>3</sup> är:</p>
+          <button class="quiz-option" data-correct="false">5x<sup>2</sup></button>
+          <button class="quiz-option" data-correct="true">15x<sup>2</sup></button>
+          <button class="quiz-option" data-correct="false">3x<sup>2</sup></button>
+          <div class="quiz-feedback hidden">5·3·x<sup>3−1</sup> = 15x<sup>2</sup>. Flytta ner 3:an, multiplicera med koefficienten, minska exponenten.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>f(x) = x<sup>3</sup> − 6x + 2. Vad är f'(x)?</p>
+          <button class="quiz-option" data-correct="true">3x<sup>2</sup> − 6</button>
+          <button class="quiz-option" data-correct="false">3x<sup>2</sup> − 6x</button>
+          <button class="quiz-option" data-correct="false">x<sup>2</sup> − 6</button>
+          <div class="quiz-feedback hidden">x<sup>3</sup> → 3x<sup>2</sup>, −6x → −6, och konstanten 2 → 0. Svar: 3x<sup>2</sup> − 6.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Tangentens ekvation i x = a ges av:</p>
+          <button class="quiz-option" data-correct="false">y = f(a) · x + f'(a)</button>
+          <button class="quiz-option" data-correct="false">y = f'(x)(x − a)</button>
+          <button class="quiz-option" data-correct="true">y = f'(a)(x − a) + f(a)</button>
+          <div class="quiz-feedback hidden">Tangentformeln: y = f'(a)(x − a) + f(a). Du behöver både funktionsvärdet f(a) och derivatans värde f'(a).</div>
+        </div>
+
+        <div class="quiz-question" data-q="4">
+          <p>f(x) = 4x<sup>2</sup> − x. Vad är tangentens lutning i x = 2?</p>
+          <button class="quiz-option" data-correct="false">14</button>
+          <button class="quiz-option" data-correct="true">15</button>
+          <button class="quiz-option" data-correct="false">16</button>
+          <div class="quiz-feedback hidden">f'(x) = 8x − 1. f'(2) = 16 − 1 = 15.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">4</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="deriv-power">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.3 Exponentialfunktioner, e, ln -->
+  <section class="topic" data-topic-id="deriv-exp">
+    <div class="topic-header">
+      <h3>2.3 e, ln &amp; exponentialfunktioner</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Talet e (≈ 2,718) är speciellt: e<sup>x</sup> är sin egen derivata. Det gör exponentialfunktioner enkla att derivera.
+        ln (naturliga logaritmen) är inversen till e — du behöver den för att lösa ekvationer med e.
+        Alla andra baser (t.ex. 2<sup>x</sup>) går via ln.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Mönstret:</strong> e<sup>nåt</sup> → samma grej × derivatan av "nåt". Har du annan bas a<sup>x</sup>? Multiplicera med ln(a).
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">f(x) = e<sup>x</sup> → f'(x) = e<sup>x</sup></span>
+        <span class="formula">f(x) = e<sup>kx</sup> → f'(x) = k · e<sup>kx</sup> (kex-regeln)</span>
+        <span class="formula">f(x) = C · e<sup>kx</sup> → f'(x) = C · k · e<sup>kx</sup></span>
+        <span class="formula">f(x) = a<sup>x</sup> → f'(x) = a<sup>x</sup> · ln(a)</span>
+        <span class="formula">ln(e<sup>x</sup>) = x &nbsp;&nbsp;|&nbsp;&nbsp; e<sup>ln(x)</sup> = x</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=derivata+exponentialfunktion+e+ln+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga 1:</strong> Derivera f(x) = 5e<sup>3x</sup></p>
+          <div class="step">Kex-regeln: koefficient × k × e<sup>kx</sup></div>
+          <div class="step step-result">f'(x) = 5 · 3 · e<sup>3x</sup> = 15e<sup>3x</sup></div>
+          <br>
+          <p><strong>Fråga 2:</strong> Lös e<sup>2x</sup> = 10</p>
+          <div class="step">Ta ln av båda led: ln(e<sup>2x</sup>) = ln(10)</div>
+          <div class="step">2x = ln(10)</div>
+          <div class="step step-result">x = ln(10)/2 ≈ 1,15</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="deriv-exp">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>Derivatan av f(x) = e<sup>x</sup> är:</p>
+          <button class="quiz-option" data-correct="false">x · e<sup>x−1</sup></button>
+          <button class="quiz-option" data-correct="true">e<sup>x</sup></button>
+          <button class="quiz-option" data-correct="false">1</button>
+          <div class="quiz-feedback hidden">e<sup>x</sup> är sin egen derivata — det är hela poängen med talet e!</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>Derivatan av f(x) = 3e<sup>−2x</sup> är:</p>
+          <button class="quiz-option" data-correct="false">3e<sup>−2x</sup></button>
+          <button class="quiz-option" data-correct="false">−2e<sup>−2x</sup></button>
+          <button class="quiz-option" data-correct="true">−6e<sup>−2x</sup></button>
+          <div class="quiz-feedback hidden">Kex-regeln: 3 · (−2) · e<sup>−2x</sup> = −6e<sup>−2x</sup>. Multiplicera koefficienten med k.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Derivatan av f(x) = 2<sup>x</sup> är:</p>
+          <button class="quiz-option" data-correct="false">x · 2<sup>x−1</sup></button>
+          <button class="quiz-option" data-correct="true">2<sup>x</sup> · ln(2)</button>
+          <button class="quiz-option" data-correct="false">2<sup>x</sup></button>
+          <div class="quiz-feedback hidden">Annan bas än e: f'(x) = a<sup>x</sup> · ln(a). Här: 2<sup>x</sup> · ln(2).</div>
+        </div>
+
+        <div class="quiz-question" data-q="4">
+          <p>Lös e<sup>3x</sup> = 20. Vad blir x?</p>
+          <button class="quiz-option" data-correct="true">ln(20) / 3</button>
+          <button class="quiz-option" data-correct="false">20 / 3</button>
+          <button class="quiz-option" data-correct="false">3 · ln(20)</button>
+          <div class="quiz-feedback hidden">Ta ln av båda led: 3x = ln(20), så x = ln(20)/3 ≈ 1,00.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">4</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="deriv-exp">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.1-3.2 Extremvärden (BONUS) -->
+  <section class="topic" data-topic-id="deriv-extreme">
+    <div class="topic-header">
+      <h3>3.1–3.2 Extremvärden <span class="bonus-badge">Bonus</span></h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Här använder du derivatan för att hitta max och min. Sätt f'(x) = 0, kolla om derivatan byter tecken.
+        Andraderivatan f''(x) berättar om krökningen. Inflexionspunkt = där krökningen byter riktning.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Receptet:</strong> 1) Derivera → 2) Sätt f'(x) = 0 → 3) Teckentabell för f' → 4) Plusminus-byte = extrempunkt. Plus→minus = max, minus→plus = min.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">Extrempunkt: f'(x) = 0 och f' byter tecken</span>
+        <span class="formula">Max: f' går från + till −</span>
+        <span class="formula">Min: f' går från − till +</span>
+        <span class="formula">Inflexionspunkt: f''(x) = 0 och f'' byter tecken</span>
+        <span class="formula">Slutet intervall [a,b]: jämför f(a), f(b) och alla f(x₀) där f'(x₀) = 0</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=extremv%C3%A4rde+derivata+teckentabell+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga:</strong> Bestäm extrempunkterna för f(x) = x<sup>3</sup> − 3x.</p>
+          <div class="step">f'(x) = 3x<sup>2</sup> − 3</div>
+          <div class="step">f'(x) = 0: 3x<sup>2</sup> − 3 = 0 → x<sup>2</sup> = 1 → x = ±1</div>
+          <div class="step"><strong>Teckentabell:</strong></div>
+          <div class="step">x &lt; −1: f'(−2) = 12 − 3 = 9 &gt; 0 (växande)</div>
+          <div class="step">−1 &lt; x &lt; 1: f'(0) = −3 &lt; 0 (avtagande)</div>
+          <div class="step">x &gt; 1: f'(2) = 12 − 3 = 9 &gt; 0 (växande)</div>
+          <div class="step step-result">x = −1: max (+ → −), f(−1) = 2 → maxpunkt (−1, 2)</div>
+          <div class="step step-result">x = 1: min (− → +), f(1) = −2 → minpunkt (1, −2)</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="deriv-extreme">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>Om f'(x) går från positiv till negativ i x = a, vad har vi?</p>
+          <button class="quiz-option" data-correct="true">En maxpunkt</button>
+          <button class="quiz-option" data-correct="false">En minpunkt</button>
+          <button class="quiz-option" data-correct="false">En inflexionspunkt</button>
+          <div class="quiz-feedback hidden">Funktionen växer (f' > 0) och sen avtar (f' < 0) → den vänder i en topp = maxpunkt.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>f(x) = x<sup>2</sup> − 4x + 1. Var har f en extrempunkt?</p>
+          <button class="quiz-option" data-correct="false">x = 4</button>
+          <button class="quiz-option" data-correct="true">x = 2</button>
+          <button class="quiz-option" data-correct="false">x = 1</button>
+          <div class="quiz-feedback hidden">f'(x) = 2x − 4 = 0 → x = 2. Eftersom f''(x) = 2 > 0 är det en minpunkt.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Vad är en inflexionspunkt?</p>
+          <button class="quiz-option" data-correct="false">Där f(x) = 0</button>
+          <button class="quiz-option" data-correct="false">Där f'(x) = 0</button>
+          <button class="quiz-option" data-correct="true">Där f''(x) = 0 och byter tecken (krökningen ändras)</button>
+          <div class="quiz-feedback hidden">Inflexionspunkt = där grafen byter krökning (konkav ↔ konvex). Kräver att f''(x) = 0 OCH byter tecken.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="deriv-extreme">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /del1 -->
+
+<!-- ============================= -->
+<!-- DEL 2: INTEGRALER              -->
+<!-- ============================= -->
+<div id="del2" class="tab-panel">
+
+  <!-- Vad en integral är -->
+  <section class="topic" data-topic-id="int-concept">
+    <div class="topic-header">
+      <h3>Vad är en integral?</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Integralen beräknar arean mellan grafen och x-axeln. Area ovanför x-axeln räknas som positiv,
+        area under x-axeln som negativ. Om det finns lika mycket ovan som under → integralen = 0.
+        OBS: Arean själv är alltid positiv, men integralvärdet kan bli negativt.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Kom ihåg:</strong> Integral = "nettoarean" (med tecken). Vill du ha arean? Ta absolutbeloppet av varje del.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">∫<sub>a</sub><sup>b</sup> f(x) dx = arean med tecken</span>
+        <span class="formula">Ovanför x-axeln → positivt bidrag</span>
+        <span class="formula">Under x-axeln → negativt bidrag</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=vad+%C3%A4r+en+integral+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Tänk dig:</strong> f(x) = 2 (en horisontell linje) från x = 0 till x = 3.</p>
+          <div class="step">Arean = en rektangel med bredd 3 och höjd 2</div>
+          <div class="step step-result">∫<sub>0</sub><sup>3</sup> 2 dx = 2 · 3 = 6</div>
+          <br>
+          <p><strong>Om f(x) = −1</strong> från x = 0 till x = 4:</p>
+          <div class="step">Grafen ligger under x-axeln</div>
+          <div class="step step-result">∫<sub>0</sub><sup>4</sup> (−1) dx = −1 · 4 = −4 (negativt!)</div>
+          <div class="step">Men arean är |−4| = 4.</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="int-concept">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>En funktion ligger helt under x-axeln från x = 1 till x = 5. Integralen blir:</p>
+          <button class="quiz-option" data-correct="true">Negativ</button>
+          <button class="quiz-option" data-correct="false">Positiv</button>
+          <button class="quiz-option" data-correct="false">Noll</button>
+          <div class="quiz-feedback hidden">Under x-axeln → negativt bidrag. Hela grafen är under, så integralen blir negativ.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>En graf har lika mycket area ovanför som under x-axeln. Integralen blir:</p>
+          <button class="quiz-option" data-correct="false">Positiv (area är alltid positiv)</button>
+          <button class="quiz-option" data-correct="true">Noll (de tar ut varandra)</button>
+          <button class="quiz-option" data-correct="false">Det beror på funktionen</button>
+          <div class="quiz-feedback hidden">Positiv area + lika stor negativ area = 0. Integralen mäter nettot.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Vad är skillnaden mellan "integral" och "area"?</p>
+          <button class="quiz-option" data-correct="false">De är samma sak</button>
+          <button class="quiz-option" data-correct="true">Integralen kan bli negativ, arean är alltid positiv</button>
+          <button class="quiz-option" data-correct="false">Area gäller bara rektanglar</button>
+          <div class="quiz-feedback hidden">Integralen räknar med tecken (+ ovan, − under x-axeln). Arean = absolutbeloppet, alltid ≥ 0.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-concept">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integralnotation -->
+  <section class="topic" data-topic-id="int-notation">
+    <div class="topic-header">
+      <h3>Integralnotation</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Integralnotationen ser skrämmande ut men har bara fyra delar. Lär dig läsa den som en mening:
+        "Beräkna arean under f(x) från a till b."
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Läs det som:</strong> ∫ = "summan av", a/b = "från/till", f(x) = "funktionen", dx = "med avseende på x"
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">∫<sub>a</sub><sup>b</sup> f(x) dx</span>
+        <span class="formula">∫ = integrationstecknet (ett utdraget S)</span>
+        <span class="formula">a = undre gräns (start-x)</span>
+        <span class="formula">b = övre gräns (slut-x)</span>
+        <span class="formula">f(x) = integranden (funktionen)</span>
+        <span class="formula">dx = "med avseende på x" (ska alltid vara med)</span>
+      </div>
+
+      <div class="quiz" data-topic-id="int-notation">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>I ∫<sub>2</sub><sup>7</sup> 3x<sup>2</sup> dx, vad är den övre gränsen?</p>
+          <button class="quiz-option" data-correct="false">2</button>
+          <button class="quiz-option" data-correct="true">7</button>
+          <button class="quiz-option" data-correct="false">3x<sup>2</sup></button>
+          <div class="quiz-feedback hidden">Övre gränsen skrivs längst upp på integraltecknet. Här: 7.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>Vad kallas f(x) i ∫<sub>a</sub><sup>b</sup> f(x) dx?</p>
+          <button class="quiz-option" data-correct="false">Derivatan</button>
+          <button class="quiz-option" data-correct="true">Integranden</button>
+          <button class="quiz-option" data-correct="false">Primitiven</button>
+          <div class="quiz-feedback hidden">Funktionen inne i integralen kallas integranden. Primitiven är det du får efter integrering.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Varför skriver man "dx" i slutet?</p>
+          <button class="quiz-option" data-correct="false">Det är bara tradition, behövs inte</button>
+          <button class="quiz-option" data-correct="true">Det anger vilken variabel man integrerar med avseende på</button>
+          <button class="quiz-option" data-correct="false">Det står för derivatan</button>
+          <div class="quiz-feedback hidden">dx talar om att x är integrationsvariabeln. Viktigt om det finns flera variabler.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-notation">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Uppskatta integraler -->
+  <section class="topic" data-topic-id="int-estimate">
+    <div class="topic-header">
+      <h3>Uppskatta integraler</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Ibland ska du uppskatta en integral från en graf utan att räkna. Räkna rutor!
+        Kolla skalan noggrant — en ruta kanske inte är 1×1.
+        Trianglar, rektanglar och halvcirklar har kända formler.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Strategi:</strong> Dela upp området i kända former (rektanglar, trianglar, halvcirklar). Kolla axlarnas skalning! Under x-axeln → minus.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">Rektangel: bas × höjd</span>
+        <span class="formula">Triangel: bas × höjd / 2</span>
+        <span class="formula">Halvcirkel: πr² / 2</span>
+        <span class="formula">Under x-axeln → negativt bidrag</span>
+      </div>
+
+      <div class="quiz" data-topic-id="int-estimate">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>En graf bildar en triangel med bas 4 och höjd 6 ovanför x-axeln. Integralen ≈</p>
+          <button class="quiz-option" data-correct="false">24</button>
+          <button class="quiz-option" data-correct="true">12</button>
+          <button class="quiz-option" data-correct="false">10</button>
+          <div class="quiz-feedback hidden">Triangelns area = bas × höjd / 2 = 4 × 6 / 2 = 12. Ovanför x-axeln → positivt.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>Du räknar 8 hela rutor ovanför och 3 hela rutor under x-axeln. Varje ruta = 1×1. Integralen ≈</p>
+          <button class="quiz-option" data-correct="false">11</button>
+          <button class="quiz-option" data-correct="true">5</button>
+          <button class="quiz-option" data-correct="false">8</button>
+          <div class="quiz-feedback hidden">8 (ovan) − 3 (under) = 5. Under x-axeln räknas negativt!</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>En halvcirkel med radie 3 ligger ovanför x-axeln. Integralen ≈</p>
+          <button class="quiz-option" data-correct="false">9π</button>
+          <button class="quiz-option" data-correct="true">9π/2 ≈ 14,1</button>
+          <button class="quiz-option" data-correct="false">3π</button>
+          <div class="quiz-feedback hidden">Halvcirkelns area = πr²/2 = π·9/2 = 9π/2 ≈ 14,1.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-estimate">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Primitiva funktioner -->
+  <section class="topic" data-topic-id="int-antideriv">
+    <div class="topic-header">
+      <h3>Primitiva funktioner</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Primitiv funktion = omvändningen av derivering. Istället för att "ta ner exponenten" → höj exponenten med 1 och dela.
+        Glöm inte konstanten +C vid obestämda integraler (utan gränser).
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Mönstret:</strong> Derivering baklänges: höj exponenten med 1, dela med den nya exponenten. Plus C!
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">∫ x<sup>n</sup> dx = x<sup>n+1</sup>/(n+1) + C</span>
+        <span class="formula">∫ 3x<sup>2</sup> dx = 3 · x<sup>3</sup>/3 = x<sup>3</sup> + C</span>
+        <span class="formula">∫ k dx = kx + C</span>
+        <span class="formula">∫ e<sup>kx</sup> dx = e<sup>kx</sup>/k + C</span>
+        <span class="formula">Glöm inte +C! (vid obestämd integral)</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=primitiv+funktion+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga:</strong> Bestäm den primitiva funktionen till f(x) = 4x<sup>3</sup> − 6x + 2.</p>
+          <div class="step">4x<sup>3</sup> → 4 · x<sup>4</sup>/4 = x<sup>4</sup></div>
+          <div class="step">−6x → −6 · x<sup>2</sup>/2 = −3x<sup>2</sup></div>
+          <div class="step">2 → 2x</div>
+          <div class="step step-result">F(x) = x<sup>4</sup> − 3x<sup>2</sup> + 2x + C</div>
+          <br>
+          <p><strong>Med villkor:</strong> Om F(1) = 5, bestäm C.</p>
+          <div class="step">F(1) = 1 − 3 + 2 + C = C = 5</div>
+          <div class="step step-result">C = 5, så F(x) = x<sup>4</sup> − 3x<sup>2</sup> + 2x + 5</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="int-antideriv">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>Primitiva funktionen till f(x) = 6x<sup>2</sup> är:</p>
+          <button class="quiz-option" data-correct="true">2x<sup>3</sup> + C</button>
+          <button class="quiz-option" data-correct="false">3x<sup>3</sup> + C</button>
+          <button class="quiz-option" data-correct="false">12x + C</button>
+          <div class="quiz-feedback hidden">6 · x<sup>3</sup>/3 = 2x<sup>3</sup> + C. Höj exponenten (2→3), dela med nya exponenten (3).</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>∫ 5 dx = ?</p>
+          <button class="quiz-option" data-correct="false">5</button>
+          <button class="quiz-option" data-correct="true">5x + C</button>
+          <button class="quiz-option" data-correct="false">0 + C</button>
+          <div class="quiz-feedback hidden">En konstant integreras till konstant × x. ∫ 5 dx = 5x + C.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Varför behövs +C vid obestämd integral?</p>
+          <button class="quiz-option" data-correct="false">Det är bara konvention</button>
+          <button class="quiz-option" data-correct="true">Många funktioner har samma derivata (de skiljer sig med en konstant)</button>
+          <button class="quiz-option" data-correct="false">C står för "correct"</button>
+          <div class="quiz-feedback hidden">x<sup>2</sup> + 1 och x<sup>2</sup> + 99 har båda derivatan 2x. Konstanten försvinner vid derivering, så vi måste lägga till C.</div>
+        </div>
+
+        <div class="quiz-question" data-q="4">
+          <p>Primitiva funktionen till f(x) = e<sup>2x</sup> är:</p>
+          <button class="quiz-option" data-correct="false">2e<sup>2x</sup> + C</button>
+          <button class="quiz-option" data-correct="true">e<sup>2x</sup>/2 + C</button>
+          <button class="quiz-option" data-correct="false">e<sup>2x</sup> + C</button>
+          <div class="quiz-feedback hidden">∫ e<sup>kx</sup> dx = e<sup>kx</sup>/k + C. Här: e<sup>2x</sup>/2 + C. (Dela med k!)</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">4</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-antideriv">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestämd integral steg-för-steg -->
+  <section class="topic" data-topic-id="int-definite">
+    <div class="topic-header">
+      <h3>Bestämd integral — steg för steg</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        Det här är den viktigaste metoden att kunna. Varje steg ska skrivas tydligt — det ger poäng på provet!
+        Följ receptet nedan exakt, så blir det alltid rätt.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>7-stegsreceptet:</strong> Skriv integralen → primitiv i hakparentes → stoppa in övre gränsen − undre gränsen → räkna ut → svara.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">∫<sub>a</sub><sup>b</sup> f(x) dx = [F(x)]<sub>a</sub><sup>b</sup> = F(b) − F(a)</span>
+        <a class="formula-link" href="https://www.skolverket.se/download/18.43fbf9f21900a30782418e/1718184746030/Formelblad%20Ma3bc%202021.pdf" target="_blank">📄 Formelblad</a>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=best%C3%A4md+integral+steg+f%C3%B6r+steg+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example" open>
+        <summary>Genomgångsexempel (från lektionen)</summary>
+        <div class="example-content">
+          <p><strong>Beräkna</strong> ∫<sub>−2</sub><sup>3</sup> (3x<sup>2</sup> + 1) dx</p>
+          <div class="step"><strong>1.</strong> Skriv integralen: ∫<sub>−2</sub><sup>3</sup> (3x<sup>2</sup> + 1) dx</div>
+          <div class="step"><strong>2.</strong> Bestäm primitiven: 3x<sup>2</sup> → x<sup>3</sup>, och 1 → x</div>
+          <div class="step"><strong>3.</strong> Skriv med hakparentes: = [x<sup>3</sup> + x]<sub>−2</sub><sup>3</sup></div>
+          <div class="step"><strong>4.</strong> Stoppa in övre gränsen (3): [3<sup>3</sup> + 3]</div>
+          <div class="step"><strong>5.</strong> Stoppa in undre gränsen (−2): [(−2)<sup>3</sup> + (−2)]</div>
+          <div class="step"><strong>6.</strong> Räkna ut varje parentes: [27 + 3] − [−8 + (−2)] = 30 − (−10)</div>
+          <div class="step step-result"><strong>7.</strong> = 30 + 10 = 40</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="int-definite">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>∫<sub>0</sub><sup>2</sup> 3x<sup>2</sup> dx = ?</p>
+          <button class="quiz-option" data-correct="false">6</button>
+          <button class="quiz-option" data-correct="true">8</button>
+          <button class="quiz-option" data-correct="false">12</button>
+          <div class="quiz-feedback hidden">[x<sup>3</sup>]<sub>0</sub><sup>2</sup> = 2<sup>3</sup> − 0<sup>3</sup> = 8 − 0 = 8.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>∫<sub>1</sub><sup>4</sup> 2x dx = ?</p>
+          <button class="quiz-option" data-correct="true">15</button>
+          <button class="quiz-option" data-correct="false">16</button>
+          <button class="quiz-option" data-correct="false">8</button>
+          <div class="quiz-feedback hidden">[x<sup>2</sup>]<sub>1</sub><sup>4</sup> = 4<sup>2</sup> − 1<sup>2</sup> = 16 − 1 = 15.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>Vilket steg kommer direkt efter att du skrivit primitiven i hakparentes [F(x)]<sub>a</sub><sup>b</sup>?</p>
+          <button class="quiz-option" data-correct="false">Derivera igen för att kontrollera</button>
+          <button class="quiz-option" data-correct="true">Stoppa in övre gränsen b: beräkna F(b)</button>
+          <button class="quiz-option" data-correct="false">Multiplicera med (b − a)</button>
+          <div class="quiz-feedback hidden">Nästa steg är att beräkna F(b) − F(a). Sätt in övre gränsen först, sedan den undre.</div>
+        </div>
+
+        <div class="quiz-question" data-q="4">
+          <p>∫<sub>−1</sub><sup>1</sup> x<sup>2</sup> dx = ?</p>
+          <button class="quiz-option" data-correct="false">0</button>
+          <button class="quiz-option" data-correct="true">2/3</button>
+          <button class="quiz-option" data-correct="false">1</button>
+          <div class="quiz-feedback hidden">[x<sup>3</sup>/3]<sub>−1</sub><sup>1</sup> = 1/3 − (−1/3) = 1/3 + 1/3 = 2/3. OBS: minus och minus blir plus!</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">4</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-definite">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Area mellan kurvor -->
+  <section class="topic" data-topic-id="int-area">
+    <div class="topic-header">
+      <h3>Area: under x-axeln &amp; mellan kurvor</h3>
+      <span class="topic-status"></span>
+      <span class="topic-chevron">▼</span>
+    </div>
+    <div class="topic-body">
+
+      <p class="explanation">
+        När du ska beräkna riktig area (inte bara integralen) måste du vara försiktig med delar under x-axeln.
+        Dela upp i intervall, ta absolutbelopp av varje del. Mellan kurvor: integrera |f(x) − g(x)|.
+      </p>
+
+      <div class="pattern-box">
+        💡 <strong>Strategi:</strong> 1) Hitta var grafen korsar x-axeln (nollställen). 2) Integrera varje bit separat. 3) Ta absolutbelopp av negativa delar. 4) Addera.
+      </div>
+
+      <div class="formula-box">
+        <span class="formula">Area under x-axeln: ta |∫<sub>a</sub><sup>b</sup> f(x) dx|</span>
+        <span class="formula">Area mellan f och g: ∫<sub>a</sub><sup>b</sup> |f(x) − g(x)| dx</span>
+        <span class="formula">Om f(x) ≥ g(x) på [a,b]: ∫<sub>a</sub><sup>b</sup> [f(x) − g(x)] dx</span>
+      </div>
+
+      <div class="video-link">
+        <a href="https://www.youtube.com/results?search_query=area+mellan+kurvor+integral+matte+3" target="_blank">▶ Sök genomgång på YouTube</a>
+      </div>
+
+      <details class="worked-example">
+        <summary>Genomgångsexempel</summary>
+        <div class="example-content">
+          <p><strong>Fråga:</strong> Beräkna arean mellan f(x) = x<sup>2</sup> och x-axeln på [−1, 2] om f(x) ≥ 0 på hela intervallet.</p>
+          <div class="step">Kolla: x<sup>2</sup> ≥ 0 alltid → hela grafen ovanför x-axeln</div>
+          <div class="step">Area = ∫<sub>−1</sub><sup>2</sup> x<sup>2</sup> dx = [x<sup>3</sup>/3]<sub>−1</sub><sup>2</sup></div>
+          <div class="step">= 8/3 − (−1/3) = 8/3 + 1/3</div>
+          <div class="step step-result">= 9/3 = 3</div>
+          <br>
+          <p><strong>Area mellan kurvor:</strong> f(x) = x<sup>2</sup> och g(x) = x från 0 till 1.</p>
+          <div class="step">Kolla: på [0,1] gäller x ≥ x<sup>2</sup>, dvs g(x) ≥ f(x)</div>
+          <div class="step">Area = ∫<sub>0</sub><sup>1</sup> (x − x<sup>2</sup>) dx = [x<sup>2</sup>/2 − x<sup>3</sup>/3]<sub>0</sub><sup>1</sup></div>
+          <div class="step">= (1/2 − 1/3) − (0) = 3/6 − 2/6</div>
+          <div class="step step-result">= 1/6</div>
+        </div>
+      </details>
+
+      <div class="quiz" data-topic-id="int-area">
+        <h4>Testa dig själv</h4>
+
+        <div class="quiz-question" data-q="1">
+          <p>f(x) = x<sup>2</sup> − 4 har nollställen vid x = −2 och x = 2. På [−2, 2] ligger grafen under x-axeln. Arean blir:</p>
+          <button class="quiz-option" data-correct="false">∫<sub>−2</sub><sup>2</sup> (x<sup>2</sup> − 4) dx direkt</button>
+          <button class="quiz-option" data-correct="true">|∫<sub>−2</sub><sup>2</sup> (x<sup>2</sup> − 4) dx| (ta absolutbelopp)</button>
+          <button class="quiz-option" data-correct="false">0 (symmetri)</button>
+          <div class="quiz-feedback hidden">Grafen är under x-axeln → integralen blir negativ. Arean = absolutbeloppet av integralen.</div>
+        </div>
+
+        <div class="quiz-question" data-q="2">
+          <p>Hur beräknar man arean mellan f(x) och g(x)?</p>
+          <button class="quiz-option" data-correct="false">∫ f(x) dx + ∫ g(x) dx</button>
+          <button class="quiz-option" data-correct="false">∫ f(x) · g(x) dx</button>
+          <button class="quiz-option" data-correct="true">∫ |f(x) − g(x)| dx</button>
+          <div class="quiz-feedback hidden">Arean mellan kurvorna = integralen av avståndet mellan dem, dvs |f(x) − g(x)|.</div>
+        </div>
+
+        <div class="quiz-question" data-q="3">
+          <p>f(x) = x<sup>3</sup> korsar x-axeln vid x = 0. Du vill beräkna arean på [−1, 1]. Hur gör du?</p>
+          <button class="quiz-option" data-correct="false">∫<sub>−1</sub><sup>1</sup> x<sup>3</sup> dx (det blir 0 pga symmetri, arean = 0)</button>
+          <button class="quiz-option" data-correct="true">|∫<sub>−1</sub><sup>0</sup> x<sup>3</sup> dx| + ∫<sub>0</sub><sup>1</sup> x<sup>3</sup> dx (dela upp vid nollstället)</button>
+          <button class="quiz-option" data-correct="false">∫<sub>−1</sub><sup>1</sup> |x<sup>3</sup>| dx = ∫<sub>−1</sub><sup>1</sup> x<sup>3</sup> dx</button>
+          <div class="quiz-feedback hidden">Dela upp vid nollstället! [−1,0] ligger under x-axeln → ta absolutbelopp. [0,1] ligger ovanför → räkna rakt av. Addera.</div>
+        </div>
+
+        <div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">3</span></div>
+        <button class="quiz-reset hidden">Gör om</button>
+      </div>
+
+      <div class="self-assess" data-topic-id="int-area">
+        <button data-status="ok">✅ Fattar</button>
+        <button data-status="unsure">🤔 Öva mer</button>
+        <button data-status="no">❌ Skippa</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /del2 -->
+
+<!-- === Sammanfattning / Nollställ === -->
+<div class="reset-section">
+  <button class="show-summary-btn reset-btn" style="margin-bottom: 8px;">Visa sammanfattning</button>
+  <button class="reset-btn">Nollställ all progress</button>
+</div>
+
+<!-- === Summary Overlay === -->
+<div id="summary-overlay" class="summary-overlay">
+  <div class="summary-card">
+    <h2>Sammanfattning</h2>
+    <pre class="summary-text"></pre>
+    <div class="summary-actions">
+      <button class="btn-copy">Kopiera</button>
+      <button class="btn-close">Stäng</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
