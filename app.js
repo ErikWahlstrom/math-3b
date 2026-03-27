@@ -24,6 +24,7 @@ const PREFIX = 'math3b_';
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initTopicToggles();
+  renderAllQuizzes();
   initQuiz();
   initSelfAssess();
   restoreState();
@@ -46,7 +47,6 @@ function initTabs() {
     });
   });
 
-  // Restore tab or use hash
   const hash = window.location.hash.slice(1);
   const saved = store.get(PREFIX + 'tab');
   const target = hash || saved || 'del1';
@@ -64,6 +64,58 @@ function initTopicToggles() {
   });
 }
 
+// === Dynamic Quiz Rendering ===
+function renderAllQuizzes() {
+  document.querySelectorAll('.quiz[data-topic-id]').forEach(quiz => {
+    renderQuiz(quiz);
+  });
+}
+
+function renderQuiz(quizEl) {
+  const topicId = quizEl.dataset.topicId;
+  if (!topicId || !QUESTIONS[topicId]) return;
+
+  const questions = pickQuestions(topicId, QUIZ_SIZE);
+
+  // Save which question indices were picked (for restore)
+  const pool = QUESTIONS[topicId];
+  const pickedIndices = questions.map(q => pool.indexOf(q));
+  store.set(PREFIX + 'quiz_pick_' + topicId, JSON.stringify(pickedIndices));
+
+  renderQuizHTML(quizEl, questions, topicId);
+}
+
+function renderQuizHTML(quizEl, questions, topicId) {
+  let html = '<h4>Testa dig själv</h4>';
+
+  questions.forEach((q, qi) => {
+    // Shuffle options (keeping track of correct)
+    const optionIndices = q.options.map((_, i) => i);
+    shuffleArray(optionIndices);
+
+    html += `<div class="quiz-question" data-q="${qi}">`;
+    html += `<p>${q.q}</p>`;
+    optionIndices.forEach(oi => {
+      const isCorrect = oi === q.correct;
+      html += `<button class="quiz-option" data-correct="${isCorrect}">${q.options[oi]}</button>`;
+    });
+    html += `<div class="quiz-feedback hidden">${q.feedback}</div>`;
+    html += '</div>';
+  });
+
+  html += `<div class="quiz-score hidden">Resultat: <span class="score">0</span>/<span class="total">${questions.length}</span></div>`;
+  html += '<button class="quiz-reset hidden">Nya frågor</button>';
+
+  quizEl.innerHTML = html;
+}
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
 // === Quiz Logic ===
 function initQuiz() {
   document.addEventListener('click', (e) => {
@@ -75,31 +127,23 @@ function initQuiz() {
     const feedback = question.querySelector('.quiz-feedback');
     const isCorrect = option.dataset.correct === 'true';
 
-    // Mark all as answered
     options.forEach(o => o.classList.add('answered'));
 
-    // Highlight selected
     if (isCorrect) {
       option.classList.add('correct');
     } else {
       option.classList.add('wrong');
-      // Show correct answer
       options.forEach(o => {
         if (o.dataset.correct === 'true') o.classList.add('show-correct');
       });
     }
 
-    // Show feedback
     if (feedback) {
       feedback.classList.remove('hidden');
       feedback.classList.add(isCorrect ? 'correct' : 'wrong');
     }
 
-    // Update quiz score
     updateQuizScore(question.closest('.quiz'));
-
-    // Save quiz state
-    saveQuizState(question.closest('.quiz'));
   });
 }
 
@@ -132,87 +176,20 @@ function updateQuizScore(quiz) {
   }
 }
 
-function saveQuizState(quiz) {
-  if (!quiz) return;
-  const topicId = quiz.dataset.topicId;
-  if (!topicId) return;
-
-  const questions = quiz.querySelectorAll('.quiz-question');
-  const state = [];
-  questions.forEach((q, i) => {
-    const options = q.querySelectorAll('.quiz-option');
-    let selectedIdx = -1;
-    options.forEach((o, j) => {
-      if (o.classList.contains('correct') || o.classList.contains('wrong')) {
-        selectedIdx = j;
-      }
-    });
-    state.push(selectedIdx);
-  });
-  store.set(PREFIX + 'quiz_' + topicId, JSON.stringify(state));
-}
-
-function restoreQuizState(quiz) {
-  if (!quiz) return;
-  const topicId = quiz.dataset.topicId;
-  if (!topicId) return;
-
-  const saved = store.get(PREFIX + 'quiz_' + topicId);
-  if (!saved) return;
-
-  try {
-    const state = JSON.parse(saved);
-    const questions = quiz.querySelectorAll('.quiz-question');
-    questions.forEach((q, i) => {
-      if (state[i] >= 0) {
-        const options = q.querySelectorAll('.quiz-option');
-        const selected = options[state[i]];
-        if (selected) {
-          // Simulate click effects
-          const isCorrect = selected.dataset.correct === 'true';
-          options.forEach(o => o.classList.add('answered'));
-          if (isCorrect) {
-            selected.classList.add('correct');
-          } else {
-            selected.classList.add('wrong');
-            options.forEach(o => {
-              if (o.dataset.correct === 'true') o.classList.add('show-correct');
-            });
-          }
-          const feedback = q.querySelector('.quiz-feedback');
-          if (feedback) {
-            feedback.classList.remove('hidden');
-            feedback.classList.add(isCorrect ? 'correct' : 'wrong');
-          }
-        }
-      }
-    });
-    updateQuizScore(quiz);
-  } catch { /* ignore corrupt data */ }
-}
-
-// === Quiz Reset ===
+// === Quiz Reset (new questions) ===
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.quiz-reset')) return;
   const quiz = e.target.closest('.quiz');
   if (!quiz) return;
   const topicId = quiz.dataset.topicId;
 
-  // Reset UI
-  quiz.querySelectorAll('.quiz-option').forEach(o => {
-    o.classList.remove('answered', 'correct', 'wrong', 'show-correct');
-  });
-  quiz.querySelectorAll('.quiz-feedback').forEach(f => {
-    f.classList.add('hidden');
-    f.classList.remove('correct', 'wrong');
-  });
-  const scoreEl = quiz.querySelector('.quiz-score');
-  if (scoreEl) scoreEl.classList.add('hidden');
-  const resetBtn = quiz.querySelector('.quiz-reset');
-  if (resetBtn) resetBtn.classList.add('hidden');
-
   // Clear saved state
-  if (topicId) store.remove(PREFIX + 'quiz_' + topicId);
+  if (topicId) {
+    store.remove(PREFIX + 'quiz_pick_' + topicId);
+  }
+
+  // Render fresh questions from the pool
+  renderQuiz(quiz);
 });
 
 // === Self Assessment ===
@@ -225,7 +202,6 @@ function initSelfAssess() {
     const topicId = assess.dataset.topicId;
     const status = btn.dataset.status;
 
-    // Toggle: if already active, remove
     if (btn.classList.contains('active')) {
       btn.classList.remove('active');
       store.remove(PREFIX + topicId);
@@ -274,7 +250,6 @@ function updateProgress() {
     if (unsure > 0) text.textContent += ` · ${unsure} osäkra`;
   }
 
-  // Show summary when all assessed
   if (assessed === total && total > 0) {
     showSummary(ok, unsure, no, total);
   }
@@ -354,30 +329,20 @@ document.addEventListener('click', (e) => {
 
 // === Reset All ===
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.reset-btn')) return;
+  if (!e.target.closest('.reset-btn') || e.target.closest('.show-summary-btn')) return;
   if (!confirm('Nollställa all progress?')) return;
 
   TOPIC_IDS.forEach(id => {
     store.remove(PREFIX + id);
-    store.remove(PREFIX + 'quiz_' + id);
+    store.remove(PREFIX + 'quiz_pick_' + id);
   });
 
   // Reset UI
   document.querySelectorAll('.self-assess button').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.topic-status').forEach(s => s.textContent = '');
-  document.querySelectorAll('.quiz').forEach(quiz => {
-    quiz.querySelectorAll('.quiz-option').forEach(o => {
-      o.classList.remove('answered', 'correct', 'wrong', 'show-correct');
-    });
-    quiz.querySelectorAll('.quiz-feedback').forEach(f => {
-      f.classList.add('hidden');
-      f.classList.remove('correct', 'wrong');
-    });
-    const scoreEl = quiz.querySelector('.quiz-score');
-    if (scoreEl) scoreEl.classList.add('hidden');
-    const resetBtn = quiz.querySelector('.quiz-reset');
-    if (resetBtn) resetBtn.classList.add('hidden');
-  });
+
+  // Re-render all quizzes with fresh questions
+  renderAllQuizzes();
 
   updateProgress();
 });
@@ -397,8 +362,7 @@ function restoreState() {
     }
   });
 
-  // Restore quizzes
-  document.querySelectorAll('.quiz[data-topic-id]').forEach(quiz => {
-    restoreQuizState(quiz);
-  });
+  // Note: quizzes are already rendered fresh on each page load
+  // This is intentional — no need to restore exact quiz state
+  // The user gets a mix of familiar and new questions each visit
 }
