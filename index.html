@@ -44,6 +44,32 @@
         Positiv derivata → funktionen ökar. Negativ derivata → den minskar. Noll → vågrät tangent.
       </p>
 
+      <!-- Graf: tangentlinje på x² i punkt (2,4) -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Grid -->
+          <line x1="40" y1="170" x2="280" y2="170" stroke="#30363d" stroke-width="1"/>
+          <line x1="40" y1="170" x2="40" y2="10" stroke="#30363d" stroke-width="1"/>
+          <text x="285" y="175" fill="#8b949e" font-size="11">x</text>
+          <text x="32" y="8" fill="#8b949e" font-size="11">y</text>
+          <!-- Tick marks -->
+          <line x1="100" y1="167" x2="100" y2="173" stroke="#30363d"/><text x="96" y="185" fill="#8b949e" font-size="9">1</text>
+          <line x1="160" y1="167" x2="160" y2="173" stroke="#30363d"/><text x="156" y="185" fill="#8b949e" font-size="9">2</text>
+          <line x1="220" y1="167" x2="220" y2="173" stroke="#30363d"/><text x="216" y="185" fill="#8b949e" font-size="9">3</text>
+          <!-- f(x) = x² kurva -->
+          <path d="M40,170 Q100,165 115,155 Q140,130 160,106 Q180,75 200,42 Q210,22 220,2" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <text x="225" y="15" fill="#58a6ff" font-size="11">f(x) = x²</text>
+          <!-- Punkt (2, 4) -->
+          <circle cx="160" cy="106" r="5" fill="#f0883e"/>
+          <text x="168" y="100" fill="#f0883e" font-size="10">(2, 4)</text>
+          <!-- Tangent y = 4x - 4 -->
+          <line x1="80" y1="170" x2="240" y2="42" stroke="#3fb950" stroke-width="1.5" stroke-dasharray="6,3"/>
+          <text x="200" y="58" fill="#3fb950" font-size="10">tangent</text>
+          <text x="200" y="70" fill="#3fb950" font-size="10">k = f'(2) = 4</text>
+        </svg>
+        <p class="graph-caption">Tangentlinjen i x = 2 har lutning f'(2) = 4</p>
+      </div>
+
       <div class="pattern-box">
         💡 <strong>Tumregel:</strong> f'(x) berättar om grafen lutar uppåt (+), nedåt (−) eller är platt (0) i varje punkt.
       </div>
@@ -211,6 +237,35 @@
         Andraderivatan f''(x) berättar om krökningen. Inflexionspunkt = där krökningen byter riktning.
       </p>
 
+      <!-- Graf: x³ - 3x med max och minpunkter -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Axlar -->
+          <line x1="30" y1="100" x2="280" y2="100" stroke="#30363d" stroke-width="1"/>
+          <line x1="150" y1="190" x2="150" y2="10" stroke="#30363d" stroke-width="1"/>
+          <text x="283" y="104" fill="#8b949e" font-size="11">x</text>
+          <text x="153" y="8" fill="#8b949e" font-size="11">y</text>
+          <!-- Ticks -->
+          <line x1="90" y1="97" x2="90" y2="103" stroke="#30363d"/><text x="84" y="115" fill="#8b949e" font-size="9">−1</text>
+          <line x1="210" y1="97" x2="210" y2="103" stroke="#30363d"/><text x="207" y="115" fill="#8b949e" font-size="9">1</text>
+          <!-- f(x) = x³ - 3x -->
+          <path d="M30,145 Q60,170 90,60 Q110,20 150,100 Q190,180 210,140 Q240,30 270,55" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <text x="240" y="45" fill="#58a6ff" font-size="10">f(x) = x³−3x</text>
+          <!-- Maxpunkt (-1, 2) -->
+          <circle cx="90" cy="60" r="5" fill="#f85149"/>
+          <text x="48" y="50" fill="#f85149" font-size="10">MAX</text>
+          <text x="48" y="62" fill="#f85149" font-size="9">(−1, 2)</text>
+          <!-- Minpunkt (1, -2) -->
+          <circle cx="210" cy="140" r="5" fill="#3fb950"/>
+          <text x="218" y="152" fill="#3fb950" font-size="10">MIN</text>
+          <text x="218" y="164" fill="#3fb950" font-size="9">(1, −2)</text>
+          <!-- f'=0 annotations -->
+          <line x1="90" y1="60" x2="90" y2="100" stroke="#f85149" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+          <line x1="210" y1="140" x2="210" y2="100" stroke="#3fb950" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+        </svg>
+        <p class="graph-caption">f'(x) = 0 vid max- och minpunkterna. f' byter tecken.</p>
+      </div>
+
       <div class="pattern-box">
         💡 <strong>Receptet:</strong> 1) Derivera → 2) Sätt f'(x) = 0 → 3) Teckentabell för f' → 4) Plusminus-byte = extrempunkt. Plus→minus = max, minus→plus = min.
       </div>
@@ -274,6 +329,33 @@
         area under x-axeln som negativ. Om det finns lika mycket ovan som under → integralen = 0.
         OBS: Arean själv är alltid positiv, men integralvärdet kan bli negativt.
       </p>
+
+      <!-- Graf: area ovan och under x-axeln -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Axlar -->
+          <line x1="30" y1="100" x2="280" y2="100" stroke="#30363d" stroke-width="1"/>
+          <line x1="30" y1="190" x2="30" y2="10" stroke="#30363d" stroke-width="1"/>
+          <text x="283" y="104" fill="#8b949e" font-size="11">x</text>
+          <!-- Positiv area (grön, ovanför) -->
+          <path d="M50,100 Q90,40 130,30 Q160,25 190,100" fill="rgba(63,185,80,0.2)" stroke="none"/>
+          <path d="M50,100 Q90,40 130,30 Q160,25 190,100" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <!-- Negativ area (röd, under) -->
+          <path d="M190,100 Q220,150 250,170 Q265,175 270,100" fill="rgba(248,81,73,0.2)" stroke="none"/>
+          <path d="M190,100 Q220,150 250,170 Q265,175 270,100" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <!-- Labels -->
+          <text x="100" y="75" fill="#3fb950" font-size="13" font-weight="bold">+</text>
+          <text x="88" y="90" fill="#3fb950" font-size="10">positivt</text>
+          <text x="225" y="145" fill="#f85149" font-size="13" font-weight="bold">−</text>
+          <text x="215" y="160" fill="#f85149" font-size="10">negativt</text>
+          <!-- Nollställe -->
+          <circle cx="190" cy="100" r="3" fill="#f0883e"/>
+          <text x="178" y="118" fill="#f0883e" font-size="9">nollställe</text>
+          <!-- f(x) label -->
+          <text x="135" y="22" fill="#58a6ff" font-size="10">f(x)</text>
+        </svg>
+        <p class="graph-caption">Grön yta = positivt bidrag. Röd yta = negativt bidrag. Integralen = nettot.</p>
+      </div>
 
       <div class="pattern-box">
         💡 <strong>Kom ihåg:</strong> Integral = "nettoarean" (med tecken). Vill du ha arean? Ta absolutbeloppet av varje del.
@@ -366,6 +448,40 @@
         Trianglar, rektanglar och halvcirklar har kända formler.
       </p>
 
+      <!-- Graf: rutnät med kurva att räkna rutor -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Rutnät -->
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#30363d" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect x="40" y="0" width="240" height="200" fill="url(#grid)"/>
+          <!-- Axlar -->
+          <line x1="40" y1="120" x2="280" y2="120" stroke="#8b949e" stroke-width="1"/>
+          <line x1="40" y1="200" x2="40" y2="0" stroke="#8b949e" stroke-width="1"/>
+          <!-- Tick-labels -->
+          <text x="78" y="135" fill="#8b949e" font-size="9">1</text>
+          <text x="118" y="135" fill="#8b949e" font-size="9">2</text>
+          <text x="158" y="135" fill="#8b949e" font-size="9">3</text>
+          <text x="198" y="135" fill="#8b949e" font-size="9">4</text>
+          <text x="238" y="135" fill="#8b949e" font-size="9">5</text>
+          <text x="24" y="124" fill="#8b949e" font-size="9">0</text>
+          <text x="24" y="84" fill="#8b949e" font-size="9">1</text>
+          <text x="24" y="44" fill="#8b949e" font-size="9">2</text>
+          <text x="24" y="164" fill="#8b949e" font-size="9">−1</text>
+          <!-- Area under kurva (grön) -->
+          <path d="M40,120 Q80,80 120,60 Q160,45 200,80 Q220,95 240,120" fill="rgba(63,185,80,0.2)" stroke="none"/>
+          <!-- Kurva -->
+          <path d="M40,120 Q80,80 120,60 Q160,45 200,80 Q220,95 240,120" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <!-- Räkna-tips -->
+          <text x="110" y="95" fill="#3fb950" font-size="11" font-weight="bold">~7 rutor</text>
+          <text x="100" y="108" fill="#3fb950" font-size="9">= area ≈ 7</text>
+        </svg>
+        <p class="graph-caption">Räkna rutorna under kurvan. Varje ruta = 1 areaenhet. Halva rutor ≈ 0,5.</p>
+      </div>
+
       <div class="pattern-box">
         💡 <strong>Strategi:</strong> Dela upp området i kända former (rektanglar, trianglar, halvcirklar). Kolla axlarnas skalning! Under x-axeln → minus.
       </div>
@@ -457,6 +573,34 @@
         Följ receptet nedan exakt, så blir det alltid rätt.
       </p>
 
+      <!-- Graf: bestämd integral med markerad area -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Axlar -->
+          <line x1="30" y1="150" x2="280" y2="150" stroke="#30363d" stroke-width="1"/>
+          <line x1="70" y1="190" x2="70" y2="10" stroke="#30363d" stroke-width="1"/>
+          <text x="283" y="154" fill="#8b949e" font-size="11">x</text>
+          <!-- Ticks -->
+          <text x="63" y="165" fill="#8b949e" font-size="9">0</text>
+          <line x1="120" y1="147" x2="120" y2="153" stroke="#30363d"/>
+          <line x1="220" y1="147" x2="220" y2="153" stroke="#30363d"/>
+          <!-- a och b gränslinjer -->
+          <line x1="120" y1="150" x2="120" y2="40" stroke="#f0883e" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="220" y1="150" x2="220" y2="25" stroke="#f0883e" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="114" y="168" fill="#f0883e" font-size="11" font-weight="bold">a</text>
+          <text x="214" y="168" fill="#f0883e" font-size="11" font-weight="bold">b</text>
+          <!-- Skuggad area -->
+          <path d="M120,150 L120,40 Q145,25 170,30 Q195,35 220,25 L220,150 Z" fill="rgba(88,166,255,0.2)" stroke="none"/>
+          <!-- Kurva -->
+          <path d="M50,120 Q80,70 120,40 Q150,25 170,30 Q200,35 220,25 Q250,15 270,50" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <text x="245" y="40" fill="#58a6ff" font-size="10">f(x)</text>
+          <!-- Area label -->
+          <text x="140" y="100" fill="#58a6ff" font-size="12" font-weight="bold">Area</text>
+          <text x="130" y="115" fill="#8b949e" font-size="10">= F(b) − F(a)</text>
+        </svg>
+        <p class="graph-caption">∫ₐᵇ f(x)dx = arean under kurvan mellan a och b</p>
+      </div>
+
       <div class="pattern-box">
         💡 <strong>7-stegsreceptet:</strong> Skriv integralen → primitiv i hakparentes → stoppa in övre gränsen − undre gränsen → räkna ut → svara.
       </div>
@@ -507,6 +651,32 @@
         När du ska beräkna riktig area (inte bara integralen) måste du vara försiktig med delar under x-axeln.
         Dela upp i intervall, ta absolutbelopp av varje del. Mellan kurvor: integrera |f(x) − g(x)|.
       </p>
+
+      <!-- Graf: area mellan två kurvor -->
+      <div class="graph-container">
+        <svg viewBox="0 0 300 200" class="graph">
+          <!-- Axlar -->
+          <line x1="30" y1="160" x2="280" y2="160" stroke="#30363d" stroke-width="1"/>
+          <line x1="30" y1="190" x2="30" y2="10" stroke="#30363d" stroke-width="1"/>
+          <text x="283" y="164" fill="#8b949e" font-size="11">x</text>
+          <!-- Skärningspunkter -->
+          <circle cx="60" cy="145" r="3" fill="#f0883e"/>
+          <circle cx="240" cy="100" r="3" fill="#f0883e"/>
+          <!-- Area mellan kurvorna -->
+          <path d="M60,145 Q100,50 150,55 Q200,60 240,100" fill="none" stroke="none"/>
+          <path d="M60,145 Q100,50 150,55 Q200,60 240,100 Q200,120 150,130 Q100,135 60,145" fill="rgba(88,166,255,0.15)" stroke="none"/>
+          <!-- f(x) övre kurva -->
+          <path d="M40,160 Q60,145 100,55 Q130,30 150,55 Q190,70 240,100 Q260,115 275,130" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
+          <text x="125" y="30" fill="#58a6ff" font-size="10">f(x)</text>
+          <!-- g(x) undre kurva -->
+          <path d="M40,155 Q60,145 100,130 Q150,125 200,115 Q240,100 275,80" fill="none" stroke="#3fb950" stroke-width="2.5"/>
+          <text x="255" y="72" fill="#3fb950" font-size="10">g(x)</text>
+          <!-- Area label -->
+          <text x="120" y="95" fill="#58a6ff" font-size="11" font-weight="bold">Area</text>
+          <text x="102" y="110" fill="#8b949e" font-size="9">∫ [f(x)−g(x)] dx</text>
+        </svg>
+        <p class="graph-caption">Arean mellan f(x) och g(x) = ∫ |f(x) − g(x)| dx</p>
+      </div>
 
       <div class="pattern-box">
         💡 <strong>Strategi:</strong> 1) Hitta var grafen korsar x-axeln (nollställen). 2) Integrera varje bit separat. 3) Ta absolutbelopp av negativa delar. 4) Addera.

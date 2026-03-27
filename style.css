@@ -305,6 +305,30 @@ body {
   font-weight: 600;
 }
 
+/* === Graphs === */
+.graph-container {
+  margin-bottom: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.graph {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graph-caption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
 /* === Quiz === */
 .quiz {
   margin-bottom: 14px;
